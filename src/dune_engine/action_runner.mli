@@ -1,4 +1,4 @@
-(** Action runners are instances capabale of executing dune actions outside of
+(** Action runners are instances capabale of executing Dune actions outside of
     the build engine's process. *)
 
 module Rpc_server : sig
