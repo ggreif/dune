@@ -289,6 +289,10 @@ end
 
 let display_term =
   let module Display = Dune_engine.Display in
+  let docv =
+    Display.all |> List.map ~f:fst |> String.concat ~sep:" | "
+    |> sprintf "MODE (%s)"
+  in
   one_of
     (let+ verbose =
        Arg.(
@@ -300,7 +304,7 @@ let display_term =
     Arg.(
       value
       & opt (some (enum Display.all)) None
-      & info [ "display" ] ~docs:copts_sect ~docv:"MODE"
+      & info [ "display" ] ~docs:copts_sect ~docv
           ~doc:
             {|Control the display mode of Dune.
          See $(b,dune-config\(5\)) for more details.|})
